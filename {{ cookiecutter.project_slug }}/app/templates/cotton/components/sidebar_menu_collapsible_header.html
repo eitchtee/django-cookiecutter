@@ -8,5 +8,6 @@
   </div>
 </li>
 <div class="collapse tw:lg:hidden tw:lg:group-hover:block" id="{{ title|slugify }}">
-  {{ slot }}
+  {% raw -%}{{ slot }}
+  {% endraw -%}
 </div>
