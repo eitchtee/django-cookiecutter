@@ -8,8 +8,7 @@
        data-original-value="{% currency_display amount=amount prefix=prefix suffix=suffix decimal_places=decimal_places %}"
        data-amount="{{ amount|floatformat:"-40u" }}"></span>
     <span>
-      {% raw -%}{{ slot }}
-      {% endraw -%}
+      {{ slot }}
     </span>
     {% if not divless %}
     </div>
