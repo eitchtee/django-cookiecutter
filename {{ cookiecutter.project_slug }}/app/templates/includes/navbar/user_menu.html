@@ -1,52 +1,63 @@
-{% load settings %}
-{% load i18n %}
-<div class="dropdown">
-  <div class="btn btn-secondary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="fa-solid fa-cog"></i>
-  </div>
-  <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
-    <li><a class="dropdown-item"
+{% raw -%}
+  {% load settings %}
+  {% load i18n %}
+  <div class="dropdown">
+    <div class="btn btn-secondary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-solid fa-cog"></i>
+    </div>
+    <ul class="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
+      <li>
+        <a class="dropdown-item"
            hx-get="{% url 'user_settings' %}"
            hx-target="#generic-offcanvas"
            role="button">
-      <i class="fa-solid fa-gear me-2 fa-fw"></i>{% translate 'Settings' %}</a></li>
-    <li><a class="dropdown-item"
+          <i class="fa-solid fa-gear me-2 fa-fw"></i>{% translate 'Settings' %}</a>
+      </li>
+      <li>
+        <a class="dropdown-item"
            hx-get="{% url 'user_edit' pk=request.user.id %}"
            hx-target="#generic-offcanvas"
            role="button">
-      <i class="fa-solid fa-user me-2 fa-fw"></i>{% translate 'Edit profile' %}</a></li>
-    <li><hr class="dropdown-divider"></li>
-    {% spaceless %}
-    <li>
-      <a class="dropdown-item" hx-get="{% url 'toggle_amount_visibility' %}" role="button">
-        {% if user.settings.hide_amounts %}
-        {% include 'users/generic/show_amounts.html' %}
-        {% else %}
-        {% include 'users/generic/hide_amounts.html' %}
-        {% endif %}
-      </a>
-    </li>
-    {% endspaceless %}
-    {% spaceless %}
-    <li>
-      <a class="dropdown-item" hx-get="{% url 'toggle_sound_playing' %}" role="button">
-        {% if user.settings.mute_sounds %}
-        {% include 'users/generic/play_sounds.html' %}
-        {% else %}
-        {% include 'users/generic/mute_sounds.html' %}
-        {% endif %}
-      </a>
-    </li>
-    {% endspaceless %}
-    <li><hr class="dropdown-divider"></li>
-    <li>
-      <a class="dropdown-item" hx-get="{% url 'invalidate_cache' %}" role="button">
-        <i class="fa-solid fa-broom me-2 fa-fw"></i>{% translate 'Clear cache' %}
-      </a>
-    </li>
-    <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fa-solid fa-door-open me-2 fa-fw"></i
-    >{% translate 'Logout' %}</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="https://github.com/eitchtee/WYGIWYH/releases" target="_blank" rel="nofollow">v. {% settings "APP_VERSION" %}</a></li>
-  </ul>
-</div>
+          <i class="fa-solid fa-user me-2 fa-fw"></i>{% translate 'Edit profile' %}</a>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      {% spaceless %}
+        <li>
+          <a class="dropdown-item" hx-get="{% url 'toggle_amount_visibility' %}" role="button">
+            {% if user.settings.hide_amounts %}
+              {% include 'users/generic/show_amounts.html' %}
+            {% else %}
+              {% include 'users/generic/hide_amounts.html' %}
+            {% endif %}
+          </a>
+        </li>
+      {% endspaceless %}
+      {% spaceless %}
+        <li>
+          <a class="dropdown-item" hx-get="{% url 'toggle_sound_playing' %}" role="button">
+            {% if user.settings.mute_sounds %}
+              {% include 'users/generic/play_sounds.html' %}
+            {% else %}
+              {% include 'users/generic/mute_sounds.html' %}
+            {% endif %}
+          </a>
+        </li>
+      {% endspaceless %}
+      <li><hr class="dropdown-divider"></li>
+      <li>
+        <a class="dropdown-item" hx-get="{% url 'invalidate_cache' %}" role="button">
+          <i class="fa-solid fa-broom me-2 fa-fw"></i>{% translate 'Clear cache' %}
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="{% url 'logout' %}">
+          <i class="fa-solid fa-door-open me-2 fa-fw"></i
+    >{% translate 'Logout' %}</a>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li>
+        <a class="dropdown-item" href="https://github.com/eitchtee/WYGIWYH/releases" target="_blank" rel="nofollow">v. {% settings "APP_VERSION" %}</a>
+      </li>
+    </ul>
+  </div>
+{% endraw -%}

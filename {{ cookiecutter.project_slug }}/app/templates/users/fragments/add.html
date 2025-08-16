@@ -1,11 +1,14 @@
-{% extends 'extends/offcanvas.html' %}
-{% load i18n %}
-{% load crispy_forms_tags %}
+{% raw -%}
+    {% extends 'extends/offcanvas.html' %}
+    {% load i18n %}
+    {% load crispy_forms_tags %}
 
-{% block title %}{% translate 'Add user' %}{% endblock %}
+    {% block title %}{% translate 'Add user' %}
+    {% endblock %}
 
-{% block body %}
-<form hx-post="{% url 'user_add' %}" hx-target="#generic-offcanvas" novalidate>
-    {% crispy form %}
-</form>
-{% endblock %}
+    {% block body %}
+        <form hx-post="{% url 'user_add' %}" hx-target="#generic-offcanvas" novalidate>
+            {% crispy form %}
+        </form>
+    {% endblock %}
+{% endraw -%}
