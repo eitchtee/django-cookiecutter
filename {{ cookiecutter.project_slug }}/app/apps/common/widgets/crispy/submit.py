@@ -3,7 +3,7 @@ from crispy_forms.layout import BaseInput
 
 class NoClassSubmit(BaseInput):
     """
-    Used to create a Submit button descriptor for the {% crispy %} template tag.
+    Used to create a Submit button descriptor for the {% raw -%}{% crispy %}{% endraw -%} template tag.
 
     Attributes
     ----------
